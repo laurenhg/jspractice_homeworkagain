@@ -70,5 +70,70 @@ const departments = {
         ],
     }
 }
-// 1a: Log the number of employees in the Sales department in the console, in the following format: "The Sales department has [x] employees." Task 1b: Log the department description of the Marketing department in the console, in the following format: "Marketing is a fun department to work in. [description]." Task 1c: Log the number of employees in the Customer Service department in the console, in the following format: "The Customer Service department has [number] employees." Note: there is something strange with this property! Task 1d: Log the description of the "Sales Manager" position in the console, in the following format: "Sales is a challenging department to work in as a Sales Manager. [Sales Manager position description]"
-console.log(departments);
+// 1a: Log the number of employees in the Sales department in the console, in the following format: "The Sales department has [x] employees."
+console.log('The sales department has ' +departments.sales.numberOfEmployees + ' employees.');
+
+//Task 1b: Log the department description of the Marketing department in the console, in the following format: "Marketing is a fun department to work in. [description]."
+
+console.log('Marketing is a fun department to work in. ' +departments.marketing.description);
+
+// Task 1c: Log the number of employees in the Customer Service department in the console, in the following format: "The Customer Service department has [number] employees." Note: there is something strange with this property!
+
+console.log('The Customer Service department has '+departments["customer-service"].numberOfEmployees + ' employees.');
+
+// Task 1d: Log the description of the "Sales Manager" position in the console, in the following format: "Sales is a challenging department to work in as a Sales Manager. [Sales Manager position description]"
+
+console.log('Sales Manager is a challenging position within the Sales department. ' +departments.sales.jobs[1].description);
+
+// Task 2a: Use the above example and modify it to prompt the user with the following question: "About which department do you want more information? Choose from: [marketing / sales / customer-service]." Log the entered answer in the console. Tip: always provide your input prompt in lowercase ("marketing" instead of "Marketing" or "MARKETING") to avoid issues in the script.
+
+const userDepartmentInput = prompt('About which department would you like to have more information? Choose from: [ marketing, sales or customer-service]');
+console.log(userDepartmentInput);
+
+//Task 2b: Time for the real work! Based on what the user enters ("marketing", "sales", or "customer service"), we want to log a description of that department in the console. You won't type the descriptions manually; instead, you'll access them via the departments object. You'll need to build a decision structure for this. Regardless of the chosen department, log the outcome in the following format: "You chose [entered choice]. [department description]"
+
+if (userDepartmentInput === 'marketing') {
+    console.log(userDepartmentInput +' is a fun department to work in. There are currently ' + departments.marketing.numberOfEmployees + ' employees. ' + departments.marketing.description);
+}else if(userDepartmentInput === 'sales') {
+    console.log(userDepartmentInput + ' is a fun department to work in. There are currently ' + departments.sales.numberOfEmployees + ' employees. ' +departments.sales.description);
+} else if(userDepartmentInput === 'customer-service'){
+    console.log (userDepartmentInput + ' is a fun department to work in. There are currently ' +departments["customer-service"].numberOfEmployees + ' employees. ' +departments["customer-service"].description);
+
+} else {
+    console.error('Invalid choice. Try again by refreshing the page. ');
+}
+//Task 3 - A New Prompt Our script is already taking shape! However, to complete the next tasks, it's important to comment out your prompt and decision tree from the first part. Don't worry; we'll need this code again, but for now, let's focus on perfecting a new prompt.
+// Task 3a: Assuming the user has chosen the 'marketing' department, write a new prompt that asks the user the following:
+//     "You chose marketing. About which position do you want to know more? Enter a number between 0 and 3. 0: [position title marketing 0], 1: [position title marketing 1], 2: [position title marketing 2], 3: [position title marketing 3]" Here, you won't type the position titles of Marketing manually; instead, you'll access them via the marketing property in the departments object.Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.
+// 0: [functietitel marketing 0],
+// 1: [functietitel marketing 1],
+// 2: [functietitel marketing 2],
+// 3: [functietitel marketing 3]
+
+const userPositionInput = prompt('You chose ' +userDepartmentInput+ 'About which position would you like to know more? Enter a number between 0 and 3. '
+    + '\n '+ '0: ' + departments[userDepartmentInput].jobs[0].title
+    + '\n ' + '1: ' + departments[userDepartmentInput].jobs[1].title
+    + '\n ' + '2: ' + departments[userDepartmentInput].jobs[2].title
+    + '\n ' + '3: ' + departments[userDepartmentInput].jobs[3].title
+    + '\n ');
+console.log(userPositionInput);
+// Task 3b: Based on what the user enters (0, 1, 2, or 3), we want to log the description of the corresponding marketing position title and marketing position description in the console. Do this in the following format:
+// "You chose [title of entered marketing position]. A challenging role! [description of entered marketing position]"
+// You'll need to build a decision structure for this. Note: despite the user entering a number, it always comes back as the string version of that number from a prompt. 3 is different from "3."
+
+if(userPositionInput === '0') {
+    console.log('You chose ' + departments[userDepartmentInput].jobs[0].title + ', a challenging role! ' + departments.marketing.jobs[0].description);
+}else if(userPositionInput === '1') {
+   console.log('You chose ' + departments[userDepartmentInput].jobs[1].title + ', a challenging role! '+ departments.marketing.jobs[1].description);
+}else if(userPositionInput === '2') {
+
+    console.log('You chose ' + departments[userDepartmentInput].jobs[2].title + ', a challenging role! '+ departments.marketing.jobs[2].description);
+}else if(userPositionInput === '3') {
+
+    console.log('You chose ' + departments[userDepartmentInput].jobs[3].title + ', a challenging role! ' + departments.marketing.jobs[3].description);
+}else{
+    console.error('Invalid choice. Try again by refreshing the page.')
+}
+
+document.getElementById('role-title').textContent = 'banaan!';
+
