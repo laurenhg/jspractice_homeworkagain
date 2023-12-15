@@ -70,5 +70,5 @@ const departments = {
         ],
     }
 }
-
+// 1a: Log the number of employees in the Sales department in the console, in the following format: "The Sales department has [x] employees." Task 1b: Log the department description of the Marketing department in the console, in the following format: "Marketing is a fun department to work in. [description]." Task 1c: Log the number of employees in the Customer Service department in the console, in the following format: "The Customer Service department has [number] employees." Note: there is something strange with this property! Task 1d: Log the description of the "Sales Manager" position in the console, in the following format: "Sales is a challenging department to work in as a Sales Manager. [Sales Manager position description]"
 console.log(departments);
